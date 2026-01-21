@@ -53,7 +53,7 @@ if prompt := st.chat_input("Talk to Sakura..."):
         ] + st.session_state.messages[-6:]
 
         for chunk in client.chat.completions.create(
-            model="HuggingFaceH4/zephyr-7b-beta",
+            model="meta-llama/Llama-3.2-3B-Instruct",
             messages=messages_to_send,
             max_tokens=500,
             stream=True,
@@ -65,4 +65,5 @@ if prompt := st.chat_input("Talk to Sakura..."):
         response_placeholder.markdown(full_response)
     
     # 3. Save her answer to memory
+
     st.session_state.messages.append({"role": "assistant", "content": full_response})
